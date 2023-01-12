@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React from 'react';
 
 //! TO DO : delete serch query after searched so that they can search again from all
-
 
 export default function Search({
   chart,
@@ -17,22 +15,17 @@ export default function Search({
   searched,
   setSearched
 }) {
-  // {criteria, setCriteria, getVideoBySearchTerm}) {
-
-  // useEffect(() => {
-  //   getById();
-  // }, [])
 
   //find all then filter by search term to get id to search by id.
 
-  async function getById() {
-    let response = await axios.get(
-      `http://localhost:8080/getById/${videoGamesId}`
-    );
-    setChart(response.data);
-  }
+  // async function getById() {
+  //   let response = await axios.get(
+  //     `http://localhost:8080/getById/${videoGamesId}`
+  //   );
+  //   setChart(response.data);
+  // }
 
-  function changeCriteraToId() {
+  function searchGames() {
     if (criteria.length > 0) {
       // criteria = criteria.toLowerCase();
       let outcomes = videoGames.filter((el) => {
@@ -53,8 +46,9 @@ export default function Search({
     event.preventDefault();
     // getvideoGames();
     setCriteria("");
-    changeCriteraToId();
+    searchGames();
     setSearched(true);
+    
     
   }
 

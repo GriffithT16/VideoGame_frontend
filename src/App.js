@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 
 //import components
 import DisplayChart from "./Components/DisplayChart/DisplayChart";
@@ -12,6 +13,8 @@ function App() {
   const [criteria, setCriteria] = useState("");
   const [videoGamesId, setVideoGamesId] = useState(1);
   const [searched, setSearched] = useState(false);
+  const [customChart, setCustomChart] = useState(false);
+  
 
   useEffect(() => {
     getvideoGames();
@@ -28,7 +31,7 @@ function App() {
 
   return (
     <div>
-      <Search
+      <Search style={{margin: "10em", padding:"10em"}}
         criteria={criteria}
         setCriteria={setCriteria}
         videoGames={videoGames}
@@ -47,6 +50,8 @@ function App() {
         getvideoGames={getvideoGames}
         searched={searched}
         setSearched={setSearched}
+        customChart={customChart}
+        setCustomChart={setCustomChart}
       />
     </div>
   );

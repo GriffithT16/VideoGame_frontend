@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export default function SearchedChart({videoGames}) {
   return (
 
@@ -7,6 +8,7 @@ export default function SearchedChart({videoGames}) {
       <table className="table table-striped">
         <thead>
           <tr>
+            <th>#</th>
             <th>Name</th>
             <th>Platform</th>
             <th>Year</th>
