@@ -24,7 +24,6 @@ export default function GetAll({ videoGames }) {
     //filter by year after 2013
 
     let filteredGames = videoGames.filter((el) => el.year >= 2013);
-    console.log("filtered games:", filteredGames);
 
     //get platforms using a map function
 
@@ -37,8 +36,6 @@ export default function GetAll({ videoGames }) {
 
     let distinctplatforms = [...new Set(platforms)];
 
-    console.log("distinct platforms:", distinctplatforms);
-
     let globalSalesSum = distinctplatforms.map((game) => {
       let sum = 0;
       return (sum += game.globalsales);
@@ -50,8 +47,6 @@ export default function GetAll({ videoGames }) {
       let allGamesForPlatform = filteredGames
         .filter((game) => game.platform == platform)
         .map((game) => game.globalsales);
-
-      console.log("allGamesForPlatform", allGamesForPlatform);
 
       function getSum(total, num) {
         return total + Math.round(num);
@@ -67,7 +62,7 @@ export default function GetAll({ videoGames }) {
       globalSalesPerConsole = Math.round(globalSalesPerConsole);
       console.log("globalSalesPerConsole", globalSalesPerConsole);
 
-      return [platform, globalSalesPerConsole, "green"];
+      return [platform, globalSalesPerConsole, "bright blue"];
     });
 
     const data = [["Platform", "Sales", { role: "style" }], ...platformArrays];

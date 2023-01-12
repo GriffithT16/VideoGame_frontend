@@ -1,0 +1,29 @@
+
+.search{
+    display: flex;
+    /* max-height: fit-content;   */
+    justify-content: right;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
+    height: 3rem;
+    align-items: center;
+    /* grid-area: search; */
+    grid-column: 3; 
+    grid-row: 1;
+  } 
+  
+  .search-input{
+    height: 3rem; 
+    border-radius: 2rem;
+    width: 15rem;
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  /* .search{
+    display: none;
+  }
+
+  .searched{
+    display: block; 
+  } */

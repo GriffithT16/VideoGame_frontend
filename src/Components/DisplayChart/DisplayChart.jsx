@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import GetAll from '../Charts/GetAll';
+import SearchedChart from '../Charts/SearchedChart';
 
-//!logic here for what chart to display.
 
-export default function DisplayChart({videoGames}) {
+export default function DisplayChart({videoGames, getvideoGames, searched, setSearched}) {
 
 
 
   return (
     <div>   
+        {!searched?(
         <GetAll videoGames = {videoGames}/>
+        ):(
+        <SearchedChart videoGames = {videoGames} searched = {searched} setSearched = {setSearched}/>
+        )}
     </div>
   )
 }
