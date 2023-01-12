@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios, { all } from 'axios';
 import { Chart } from "react-google-charts";
 
 //want to show number of game copies sold globally on all consoles since 2013
@@ -40,14 +40,46 @@ import { Chart } from "react-google-charts";
 
     //remove duplicates using set constructor and spread syntax (ex: [...new Set(array)]);
         
-        let distinctplatforms = [... new Set(platforms)];
+        let distinctplatforms = [...new Set(platforms)];
         
         console.log('distinct platforms:', distinctplatforms);
 
+        let globalSalesSum = distinctplatforms.map((game) => {
+            let sum = 0;
+            return (sum += game.globalsales)});
 
-        // map(platform => {
-        //     return[platform, "10, silver"]
-        // });
+
+        let platformArrays = distinctplatforms.map(platform => {
+            debugger;
+                // allGamesForplatform = array of total amount of devices of each platform
+            let allGamesForPlatform = filteredGames.filter(game => game.platform == platform);
+                console.log('all games', allGamesForPlatform);
+                for (let i = 0; i < allGamesForPlatform.length; i++){
+                    let sum = 0;
+                    sum += i.globalsales
+                    console.log('Sum', sum)
+                    return sum;
+                    
+                }          
+            
+            
+            
+           // now we need to loop through allGamesForPlatform and sum each games global sales
+
+           //once we have the sum of all of those games global sales replace 10
+                
+           return [platform, globalSalesSum, "green"];
+
+            });
+                
+            
+            
+            
+            
+            
+        
+
+        // console.log(platformArrays);
 
 
 
@@ -77,17 +109,22 @@ import { Chart } from "react-google-charts";
 
             const data = [
                 ["Platform", "Sales", { role: "style" }],
-                ["PS3", 8.94, "gold"], // RGB value
-                ["Silver", 10.49, "silver"], // English color name
-                ["Gold", 19.3, "gold"],
-                ["Platinum", 21.45, "blue"], // CSS-style declaration 
+                ...platformArrays, 
+                
+
             ];
+            console.log('Data', data);
 
             return data;
+           
         }
 
+      
 
-    
+        // ["PS3", 8.94, "gold"], // RGB value
+        // ["Silver", 10.49, "silver"], // English color name
+        // ["Gold", 19.3, "gold"],
+        // ["Platinum", 21.45, "blue"], // CSS-style declaration 
 
 
 
