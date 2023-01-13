@@ -3,17 +3,18 @@ import React from 'react';
 //! TO DO : delete serch query after searched so that they can search again from all
 
 export default function Search({
-  chart,
-  setChart,
+  // chart,
+  // setChart,
   criteria,
   setCriteria,
   videoGames,
   setVideoGames,
   getvideoGames,
-  videoGamesId,
-  setVideoGamesId,
-  searched,
-  setSearched
+  // videoGamesId,
+  // setVideoGamesId,
+  // searched,
+  setSearched,
+  setSearchedGames
 }) {
 
   //find all then filter by search term to get id to search by id.
@@ -27,10 +28,10 @@ export default function Search({
 
   function searchGames() {
     if (criteria.length > 0) {
-      // criteria = criteria.toLowerCase();
+      criteria = criteria.toLowerCase();
       let outcomes = videoGames.filter((el) => {
-        if (el.name.includes(criteria)) {
-          // || el.game_rank.includes(criteria) || el.platform.includes(criteria) || el.year.includes(criteria) || el.genre.includes(criteria)|| el.publisher.includes(criteria) || el.northamericasales.includes(criteria) || el.europesales.includes(criteria) || el.japansales.includes(criteria)|| el.othersales.includes(criteria) || el.globalsales.includes(criteria))
+        if (el.name.toLowerCase().includes(criteria) || el.platform.toLowerCase().includes(criteria)) {
+          // || el.game_rank.includes(criteria) || el.platform.includes(criteria) || el.year.includes(criteria) || el.genre.includes(criteria) || el.publisher.includes(criteria) || el.northamericasales.includes(criteria) || el.europesales.includes(criteria) || el.japansales.includes(criteria) || el.othersales.includes(criteria) || el.globalsales.includes(criteria))
 
           return true;
         } else {
@@ -38,19 +39,20 @@ export default function Search({
         }
       });
       setVideoGames(outcomes);
+      setSearchedGames(outcomes);
     }
   }
 
   //sends search term up to app.js
   function handleSubmit(event) {
     event.preventDefault();
-    // getvideoGames();
-    setCriteria("");
+    getvideoGames();
+    setCriteria();
     searchGames();
-    setSearched(true);
-    
-    
-  }
+    setSearched(true);  
+      }
+
+
 
   return (
     <div>

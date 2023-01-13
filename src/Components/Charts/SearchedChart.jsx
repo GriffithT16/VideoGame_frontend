@@ -1,7 +1,7 @@
 import React from 'react'
 
 
-export default function SearchedChart({videoGames}) {
+export default function SearchedChart({searchedGames}) {
   return (
 
     <div>
@@ -18,7 +18,7 @@ export default function SearchedChart({videoGames}) {
           </tr>
         </thead>
         <tbody>
-          {videoGames.map((el, index) => {
+          {searchedGames.map((el, index) => {
             return (
               <tr key={index}>
                 {index + 1}

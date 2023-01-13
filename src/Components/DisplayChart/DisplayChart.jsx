@@ -10,8 +10,9 @@ export default function DisplayChart({
   setSearched,
   customChart,
   setCustomChart,
-  japan,
-  setJapan
+  setSearchedGames,
+  searchedGames
+  
 }) {
   return (
     <div>
@@ -25,6 +26,8 @@ export default function DisplayChart({
           videoGames={videoGames}
           searched={searched}
           setSearched={setSearched}
+          setSearchedGames={setSearchedGames}
+          searchedGames={searchedGames}
         />
       )}
     </div>

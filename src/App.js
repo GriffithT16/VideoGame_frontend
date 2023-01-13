@@ -14,6 +14,7 @@ function App() {
   const [videoGamesId, setVideoGamesId] = useState(1);
   const [searched, setSearched] = useState(false);
   const [customChart, setCustomChart] = useState(false);
+  const [searchedGames, setSearchedGames] = useState([]);
   
 
   useEffect(() => {
@@ -43,6 +44,8 @@ function App() {
         setVideoGamesId={setVideoGamesId}
         searched={searched}
         setSearched={setSearched}
+        searchedGames={searchedGames}
+        setSearchedGames={setSearchedGames}
       />
 
       <DisplayChart
@@ -52,6 +55,8 @@ function App() {
         setSearched={setSearched}
         customChart={customChart}
         setCustomChart={setCustomChart}
+        setSearchedGames={setSearchedGames}
+        searchedGames={searchedGames}
       />
     </div>
   );
