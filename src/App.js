@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css"
+import "./App.css";
 //import components
 import DisplayChart from "./Components/DisplayChart/DisplayChart";
 import Search from "./Components/Search/Search";
 import NavBar from "./Components/NavBar/NavBar";
 import CopiesByConsole from "./Components/Charts/CopiesByConsole";
-
-
 
 function App() {
   //constant for all videos retrieved
@@ -19,7 +17,6 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [customChart, setCustomChart] = useState(false);
   const [searchedGames, setSearchedGames] = useState([]);
-  
 
   useEffect(() => {
     getvideoGames();
@@ -36,9 +33,10 @@ function App() {
 
   return (
     <div>
-      <NavBar searched = {searched} setSearched = {setSearched}/>
-      <div className = 'component-container'></div>
-      <Search style={{margin: "10em", padding:"10em"}}
+      <NavBar searched={searched} setSearched={setSearched} />
+      <div className="component-container"></div>
+      <Search
+        style={{ margin: "10em", padding: "10em" }}
         criteria={criteria}
         setCriteria={setCriteria}
         videoGames={videoGames}
@@ -65,8 +63,11 @@ function App() {
         searchedGames={searchedGames}
       />
 
-    <CopiesByConsole videoGames = {videoGames}/>
-
+      <CopiesByConsole
+        videoGames={videoGames}
+        searchedGames={searchedGames}
+        setSearchedGames={setSearchedGames}
+      />
     </div>
   );
 }
