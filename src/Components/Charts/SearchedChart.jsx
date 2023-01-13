@@ -1,6 +1,18 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import CopiesByConsole from "./CopiesByConsole";
+
+
+
 
 export default function SearchedChart({ searchedGames }) {
+
+  let navigate = useNavigate();
+  function handleClick(game) {
+
+    navigate("/stats");
+  }
+
   return (
     <div>
       <h1 className="font-link title">Search Results</h1>
@@ -14,7 +26,7 @@ export default function SearchedChart({ searchedGames }) {
               <th className="font-link">Year</th>
               <th className="font-link">Genre</th>
               <th className="font-link">Publisher</th>
-              <th className="font-link">Game Rank</th>
+              <th className="font-link">Global Sales</th>
             </tr>
           </thead>
           <tbody>
@@ -27,7 +39,8 @@ export default function SearchedChart({ searchedGames }) {
                   <td>{el.year}</td>
                   <td>{el.genre}</td>
                   <td>{el.publisher}</td>
-                  <td>{el.game_rank}</td>
+                  <td>{el.globalsales}</td>
+                  <button onClick={() => handleClick(el)}>Stats</button>
                 </tr>
               );
             })}

@@ -7,6 +7,7 @@ import DisplayChart from "./Components/DisplayChart/DisplayChart";
 import Search from "./Components/Search/Search";
 import NavBar from "./Components/NavBar/NavBar";
 import CopiesByConsole from "./Components/Charts/CopiesByConsole";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 function App() {
   //constant for all videos retrieved
@@ -34,25 +35,23 @@ function App() {
   return (
     <div>
       <NavBar searched={searched} setSearched={setSearched} />
-      <div className="component-container"></div>
-      <Search
-        style={{ margin: "10em", padding: "10em" }}
-        criteria={criteria}
-        setCriteria={setCriteria}
-        videoGames={videoGames}
-        setVideoGames={setVideoGames}
-        chart={chart}
-        setChart={setChart}
-        getvideoGames={getvideoGames}
-        videoGamesId={videoGamesId}
-        setVideoGamesId={setVideoGamesId}
-        searched={searched}
-        setSearched={setSearched}
-        searchedGames={searchedGames}
-        setSearchedGames={setSearchedGames}
-      />
-
-      <DisplayChart
+      <Routes>
+        <Route path="/" element={[ <Search
+          style={{ margin: "10em", padding: "10em" }}
+          criteria={criteria}
+          setCriteria={setCriteria}
+          videoGames={videoGames}
+          setVideoGames={setVideoGames}
+          chart={chart}
+          setChart={setChart}
+          getvideoGames={getvideoGames}
+          videoGamesId={videoGamesId}
+          setVideoGamesId={setVideoGamesId}
+          searched={searched}
+          setSearched={setSearched}
+          searchedGames={searchedGames}
+          setSearchedGames={setSearchedGames}
+        />, <DisplayChart
         videoGames={videoGames}
         getvideoGames={getvideoGames}
         searched={searched}
@@ -61,13 +60,19 @@ function App() {
         setCustomChart={setCustomChart}
         setSearchedGames={setSearchedGames}
         searchedGames={searchedGames}
-      />
+      />]}/>
+        
 
-      <CopiesByConsole
-        videoGames={videoGames}
-        searchedGames={searchedGames}
-        setSearchedGames={setSearchedGames}
-      />
+
+
+      
+        <Route path="/stats" element={<CopiesByConsole
+            videoGames={videoGames}
+            searchedGames={searchedGames}
+            setSearchedGames={setSearchedGames}
+          />}/>
+      </Routes>
+
     </div>
   );
 }
