@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 
 export const data = [
-  ["Country", "Popularity"],
+  [["Country", "Sales"], ...salesArray]
   ["Germany", 2000],
   ["Russia", 2000],
   ["United Kingdom", 2000],
@@ -19,6 +19,11 @@ export const data = [
   ["Netherlands", 2000],
   ["United States", 2000],
   ["Japan", 1000] 
+  
+// const data = [["Platform", "Sales", { role: "style" }], ...platformArrays];
+// console.log("Data", data);
+
+// return data;
 
 ];
 
@@ -33,9 +38,12 @@ export const options = {
 
 export default function CustomChart({videoGames}) {
 
-    let japanSales = videoGames.map((el) => {
-        // console.log('japan', el.japansales) 
-        return el.japansales;
+    function generateCustomChartData(){
+        
+        let countriesArray = []
+
+        let japanSales = videoGames.map((el) => {  
+            return el.japansales;
                   
     });
     let initialValue = 0;

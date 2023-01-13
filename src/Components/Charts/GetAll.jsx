@@ -48,9 +48,9 @@ export default function GetAll({ videoGames }) {
         .filter((game) => game.platform == platform)
         .map((game) => game.globalsales);
 
-      function getSum(total, num) {
-        return total + Math.round(num);
-      }
+    //   function getSum(total, num) {
+    //     return total + Math.round(num);
+    //   }
 
       let initialValue = 0;
 
