@@ -47,7 +47,7 @@ export default function Search({
   function handleSubmit(event) {
     event.preventDefault();
     getvideoGames();
-    setCriteria();
+    setCriteria('');
     searchGames();
     setSearched(true);  
       }
@@ -55,15 +55,16 @@ export default function Search({
 
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="search">
+    <div className="search">
+  
+      <form onSubmit={handleSubmit} >
         <input
           className="search-input"
           type="text"
           onChange={(event) => setCriteria(event.target.value)}
           value={criteria}
         ></input>
-        <button type="submit">Search</button>
+        <button className ="button-51 font-link" role="button" type="submit">Search</button> 
       </form>
     </div>
   );

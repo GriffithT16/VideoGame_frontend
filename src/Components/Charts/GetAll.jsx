@@ -73,8 +73,9 @@ export default function GetAll({ videoGames }) {
 
   return (
     <div>
-      <h1>Global sales chart</h1>
-      <Chart
+      <h1 style = {{'margin':'1rem'}}  className = 'font-link title'>Global Sales by Console
+        <small className = 'text-muted font-link'> In Millions</small>
+        </h1>      <Chart
         chartType="ColumnChart"
         width="100%"
         height="400px"
