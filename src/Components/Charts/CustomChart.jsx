@@ -150,7 +150,7 @@ export default function CustomChart({videoGames}) {
         options={options}
       
       />  
-      <h5 className = 'font-link'>  *Dataset accounts for: North America, Europe, Japan, and Remaining Countries.</h5>
+      <h5 className = 'font-link data-set-note'>*Dataset accounts for: North America, Europe, Japan, and Remaining Countries.</h5>
     </div>
   );
 }

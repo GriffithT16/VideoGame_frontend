@@ -6,6 +6,9 @@ import "./App.css"
 import DisplayChart from "./Components/DisplayChart/DisplayChart";
 import Search from "./Components/Search/Search";
 import NavBar from "./Components/NavBar/NavBar";
+import CopiesByConsole from "./Components/Charts/CopiesByConsole";
+
+
 
 function App() {
   //constant for all videos retrieved
@@ -61,6 +64,9 @@ function App() {
         setSearchedGames={setSearchedGames}
         searchedGames={searchedGames}
       />
+
+    <CopiesByConsole videoGames = {videoGames}/>
+
     </div>
   );
 }
