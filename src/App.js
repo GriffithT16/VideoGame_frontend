@@ -10,6 +10,7 @@ import CopiesByConsole from "./Components/Charts/CopiesByConsole";
 import { Route, Routes, Navigate } from "react-router-dom";
 import VideoPlayer from "./Components/VideoPlayer";
 
+
 function App() {
   //constant for all videos retrieved
   const [videoGames, setVideoGames] = useState([]);
@@ -24,6 +25,7 @@ function App() {
 
   useEffect(() => {
     getvideoGames();
+    console.log("API TEST", process.env.REACT_APP_API_KEY)
   }, []);
 
   async function getvideoGames() {
@@ -75,7 +77,7 @@ function App() {
             searchedGames={searchedGames}
             setSearchedGames={setSearchedGames}
           />,
-          <VideoPlayer featuredVideo = {featuredVideo}/>]}/>
+          <VideoPlayer featuredVideo = {featuredVideo} setFeaturedVideo={setFeaturedVideo}/>]}/>
       </Routes>
 
     </div>

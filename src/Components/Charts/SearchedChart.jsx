@@ -4,13 +4,14 @@ import axios from "axios";
 
 
 
+
 export default function SearchedChart({ searchedGames, setFeaturedVideo}) {
   const navigate = useNavigate();
 
   const handleClick= (game) => {
     navigate("/stats");
     // navigate("/stats", {state: game});
-    getVideoBySearchTerm(game.name)
+    // getVideoBySearchTerm(game.name)
   };
 
 
