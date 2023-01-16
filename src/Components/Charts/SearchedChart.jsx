@@ -1,17 +1,39 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import CopiesByConsole from "./CopiesByConsole";
+import axios from "axios";
 
 
 
+export default function SearchedChart({ searchedGames, setFeaturedVideo}) {
+  const navigate = useNavigate();
 
-export default function SearchedChart({ searchedGames }) {
-
-  let navigate = useNavigate();
-  function handleClick(game) {
-
+  const handleClick= (game) => {
     navigate("/stats");
+    // navigate("/stats", {state: game});
+    getVideoBySearchTerm(game.name)
+  };
+
+
+
+//retrieves a video by criteria/search term.
+async function getVideoBySearchTerm(searchTerm) {
+  try{
+    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${process.env.REACT_APP_API_KEY}`);
+    if (response.status === 400){
+      alert('The term you searched for does not exist. Please try another search.');
+    }
+    
+    else{
+      setFeaturedVideo(response.data.items);
+      console.log('response.data.items', response.data.items)
+    }
   }
+  catch (error) {
+      alert('Youtube API queries exhausted. Try again tomorrow.');
+    }
+  }
+  
+
 
   return (
     <div>
@@ -25,7 +47,7 @@ export default function SearchedChart({ searchedGames }) {
               <th className="font-link">Year</th>
               <th className="font-link">Genre</th>
               <th className="font-link">Publisher</th>
-              <th className="font-link">Game Rank</th>
+              <th className="font-link">Rank</th>
             </tr>
           </thead>
           <tbody>
@@ -39,7 +61,7 @@ export default function SearchedChart({ searchedGames }) {
                   <td>{el.genre}</td>
                   <td>{el.publisher}</td>
                   <td>{el.game_rank}</td>
-                  <button onClick={() => handleClick(el)}>Stats</button>
+                  <button className = 'button-51' onClick={() => handleClick(el)}>Stats</button>
                 </tr>
               );
             })}

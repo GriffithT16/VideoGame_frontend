@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from "react-google-charts";
 
+
+
 export const data = [
     ["Platform", "Sales", { role: "style" }],
     ["PS3", 8.94, "gold"], // RGB value

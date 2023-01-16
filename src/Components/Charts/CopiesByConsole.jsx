@@ -1,55 +1,21 @@
-import { useNavigate } from "react-router-dom";
-import SearchedChart from "./SearchedChart";
-import React, { useState } from "react";
+
+import React, { useState } from 'react';
+import { useLocation } from "react-router-dom"
 import { Chart } from "react-google-charts";
+import axios from "axios";
+
 
 // add data visualization of the number of copies sold per console when a game is searched
-//{
-//     "id": 1,
-//     "game_rank": 11,
-//     "name": "Nintendogs",
-//     "platform": "DS",
-//     "year": 2005,
-//     "genre": "Simulation",
-//     "publisher": "Nintendo",
-//     "northamericasales": 9.07,
-//     "europesales": 11.0,
-//     "japansales": 1.93,
-//     "othersales": 2.75,
-//     "globalsales": 24.76
-// },
-// export const data = [
-//   ["Element", "Density", { role: "style" }],
-//   ["Copper", 8.94, "#b87333"], // RGB value
-//   ["Silver", 10.49, "silver"], // English color name
-//   ["Gold", 19.3, "gold"],
-//   ["Platinum", 21.45, "color: #e5e4e2"], // CSS-style declaration
-// ];
 
-// export default function CopiesByConsole({ videoGames, searchedGames }) {
-//   // !Working here!
 
-//   // let newPlatform = searchedGames.map((el, specificPlatform) => {
 
-//   let matchedPlatforms = searchedGames.map((el, specificPlatforms) => {
-//     specificPlatforms = searchedGames.map((el) => {
-//       return el.platform;
-//     });
-//     let specificPlatform = [...new Set(specificPlatforms)];
-//     for (let i = 0; i < specificPlatform.length; i++) {
-//       if (el.platform == i) {
-//         console.log("el :", el.globalsales);
-//         return el;
-//       }
-//     }
-//     console.log("specific :", specificPlatform);
-//   });
-//   console.log("matchedPlatforms :", matchedPlatforms);
 
-//   let specificSales = searchedGames.map((el) => {
-//     return el.globalsales;
-//   });
-export default function GetAll({ searchedGames }) {
+export default function CopiesByConsole({ searchedGames, featuredVideo, setFeaturedVideo}) {
+
+
+
+
+  
   function generateDataFormChart() {
     
     let filteredGames = searchedGames.filter((el) => el.year >= 1965);
@@ -84,10 +50,9 @@ export default function GetAll({ searchedGames }) {
       );
 
       // globalSalesPerConsole = Math.round(globalSalesPerConsole);
-      // console.log("globalSalesPerConsole", globalSalesPerConsole);
 
-      return [platform, globalSalesPerConsole, "darkturquoise"];
-    });
+      return [platform, globalSalesPerConsole, "light blue"];
+    }); 
 
     const data = [["Platform", "Sales", { role: "style" }], ...platformArrays];
     console.log("Data", data);
@@ -101,7 +66,8 @@ export default function GetAll({ searchedGames }) {
         Number of Copies Sold per Console
         <small className="text-muted font-link"> In Millions</small>
       </h1>
-      <Chart chartType="ColumnChart" width="100%" height="400px" data={generateDataFormChart()} />
+      <Chart chartType="ColumnChart" width="100%" height="400px" data={generateDataFormChart()}/>
+      {/* <button className = 'button-51' onClick={() => handleClick()}>Stats</button> */}
     </div>
   );
 }

@@ -7,7 +7,8 @@ import DisplayChart from "./Components/DisplayChart/DisplayChart";
 import Search from "./Components/Search/Search";
 import NavBar from "./Components/NavBar/NavBar";
 import CopiesByConsole from "./Components/Charts/CopiesByConsole";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import VideoPlayer from "./Components/VideoPlayer";
 
 function App() {
   //constant for all videos retrieved
@@ -18,6 +19,8 @@ function App() {
   const [searched, setSearched] = useState(false);
   const [customChart, setCustomChart] = useState(false);
   const [searchedGames, setSearchedGames] = useState([]);
+  const [featuredVideo, setFeaturedVideo] = useState();
+ 
 
   useEffect(() => {
     getvideoGames();
@@ -36,7 +39,8 @@ function App() {
     <div>
       <NavBar searched={searched} setSearched={setSearched} />
       <Routes>
-        <Route path="/" element={[ <Search
+        <Route path="/" element={[ 
+        <Search
           style={{ margin: "10em", padding: "10em" }}
           criteria={criteria}
           setCriteria={setCriteria}
@@ -51,7 +55,8 @@ function App() {
           setSearched={setSearched}
           searchedGames={searchedGames}
           setSearchedGames={setSearchedGames}
-        />, <DisplayChart
+        />, 
+        <DisplayChart
         videoGames={videoGames}
         getvideoGames={getvideoGames}
         searched={searched}
@@ -60,17 +65,17 @@ function App() {
         setCustomChart={setCustomChart}
         setSearchedGames={setSearchedGames}
         searchedGames={searchedGames}
+        setFeaturedVideo = {setFeaturedVideo}
       />]}/>
         
 
-
-
-      
-        <Route path="/stats" element={<CopiesByConsole
+        <Route path="/stats" element={[
+        <CopiesByConsole
             videoGames={videoGames}
             searchedGames={searchedGames}
             setSearchedGames={setSearchedGames}
-          />}/>
+          />,
+          <VideoPlayer featuredVideo = {featuredVideo}/>]}/>
       </Routes>
 
     </div>
