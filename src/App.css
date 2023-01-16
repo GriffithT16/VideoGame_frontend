@@ -124,3 +124,21 @@
 .test{
   color: darkturquoise;
 }
+
+.video-container{
+  flex-direction: column;
+  justify-content: center;
+}
+.video{
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  width: 75vw; 
+  margin: auto; 
+}
+
+.video-info{
+  justify-content: center;
+  text-align: center;
+  padding-top: 1rem;
+}
