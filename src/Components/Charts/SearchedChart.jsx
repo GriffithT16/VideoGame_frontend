@@ -5,35 +5,15 @@ import axios from "axios";
 
 
 
-export default function SearchedChart({ searchedGames, setFeaturedVideo}) {
+export default function SearchedChart({ searchedGames }) {
   const navigate = useNavigate();
 
   const handleClick= (game) => {
-    navigate("/stats");
-    // navigate("/stats", {state: game});
+    // navigate("/stats");
+    navigate("/stats", {state: game});
     // getVideoBySearchTerm(game.name)
   };
 
-
-
-//retrieves a video by criteria/search term.
-async function getVideoBySearchTerm(searchTerm) {
-  try{
-    let response = await axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchTerm}&key=${process.env.REACT_APP_API_KEY}`);
-    if (response.status === 400){
-      alert('The term you searched for does not exist. Please try another search.');
-    }
-    
-    else{
-      setFeaturedVideo(response.data.items);
-      console.log('response.data.items', response.data.items)
-    }
-  }
-  catch (error) {
-      alert('Youtube API queries exhausted. Try again tomorrow.');
-    }
-  }
-  
 
 
   return (
@@ -52,7 +32,7 @@ async function getVideoBySearchTerm(searchTerm) {
             </tr>
           </thead>
           <tbody>
-            {searchedGames.map((el, index) => {
+            {searchedGames.map((el) => {
               return (
                 <tr key={el.id}>
                   {/* {index + 1} */}
