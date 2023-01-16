@@ -35,7 +35,7 @@ export default function VideoPlayer({ featuredVideo }) {
 
   return (
     <div>
-      <div className="video-info">
+      <div className="video-info font-link">
         <h2>{title}</h2>
         <iframe
           className="video"
@@ -47,7 +47,7 @@ export default function VideoPlayer({ featuredVideo }) {
           src={`https://www.youtube.com/embed/${video}?autoplay=1&mute=1&origin=http://example.com`}
           frameborder="0"
         ></iframe>
-        <p>{description}</p>
+        <p className="font-link">{description}</p>
       </div>
     </div>
   );
